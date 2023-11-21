@@ -11,48 +11,60 @@ interface Props {
 export const DripStoreLoginMain = function () {
   return (
     <div className={classes.DripStoreLoginMain}>
-      <div className={classes.DripStoreLoginMainForm}>
-        <div className={classes.DripStoreLoginMainFormWrapper}>
-          <div className={classes.DripStoreLoginMainFormTitle}>
-            <div className={classes.DripStoreLoginMainFormTitleCaption}>Acesse sua conta</div>
-            <div className={classes.DripStoreLoginMainFormTitleSignUp}>
-              <p>
-                Novo cliente? Então registre-se <a href="">aqui</a>.
-              </p>
+
+      <div className={classes.DripStoreLoginMainContainer}>
+
+        <div className={classes.DripStoreLoginMainForm}>
+          <div className={classes.DripStoreLoginMainFormWrapper}>
+            <div className={classes.DripStoreLoginMainFormTitle}>
+              <div className={classes.DripStoreLoginMainFormTitleCaption}>Acesse sua conta</div>
+              <div className={classes.DripStoreLoginMainFormTitleSignUp}>
+                <p>
+                  Novo cliente? Então registre-se <a href="">aqui</a>.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className={classes.DripStoreLoginMainFormBody}>
-            <label>Login *</label>
-            <div>
-              <input
-                type="text"
-                placeholder="Insira seu login ou email"
-              />
+            <div className={classes.DripStoreLoginMainFormBody}>
+              <label>Login *</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Insira seu login ou email"
+                />
+              </div>
+              <label>Senha *</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Insira sua senha"
+                />
+              </div>
             </div>
-            <label>Senha *</label>
-            <div>
-              <input
-                type="text"
-                placeholder="Insira sua senha"
-              />
+
+            <div className={classes.DripStoreLoginMainFormRemember}>Esqueci minha senha</div>
+
+            <div className={classes.DripStoreLoginMainFormSignIn}>
+              <PrimaryButton label="Acessar Conta" />
             </div>
-          </div>
 
-          <div className={classes.DripStoreLoginMainFormRemember}>Esqueci minha senha</div>
-
-          <div className={classes.DripStoreLoginMainFormSignIn}>
-            <PrimaryButton label="Acessar Conta" />
-          </div>
-
-          <div className={classes.DripStoreLoginMainFormBottom}>
-            <span>Ou faça login com</span>
-            <div className={classes.DripStoreLoginMainFormBottomIcons}>
-              <Facebook />
-              <Gmail />
+            <div className={classes.DripStoreLoginMainFormBottom}>
+              <span>Ou faça login com</span>
+              <div className={classes.DripStoreLoginMainFormBottomIcons}>
+                <Facebook />
+                <Gmail />
+              </div>
             </div>
           </div>
         </div>
+
+        <div className={classes.DripStoreLoginMainShoes}>
+          <img
+            src="/assets/shoes.png"
+            alt="shoes"
+          />
+        </div>
+
       </div>
 
     </div>

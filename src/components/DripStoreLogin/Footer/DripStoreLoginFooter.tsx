@@ -1,5 +1,4 @@
 import classes from './DripStoreLoginFooter.module.css'
-import { Group53511Icon } from '../trash/Group53511Icon'
 import { DripStoreLoginFooterLogo } from './DripStoreLoginFooterLogo.js'
 import { DripStoreLoginFooterSeparatorIcon } from './DripStoreLoginFooterSeparatorIcon.js'
 
@@ -42,8 +41,7 @@ export const DripStoreLoginFooter = function () {
 
           <div className={classes.DripStoreLoginFooterContactColumn}>
             <h4>Contato</h4>
-            <p>Av. Santos Dumont,1510 - 1 andar - Aldeota, Fortaleza-CE</p>
-            <p>60150-161</p>
+            <p>Av. Santos Dumont,1510 - 1 andar - Aldeota, Fortaleza-CE, 60150-161</p>
             <p>(85) 3051-3411</p>
           </div>
         </div>

@@ -7,7 +7,6 @@ import { DripStoreLoginFooter } from './Footer/DripStoreLoginFooter.js';
 import { DripStoreLoginMain } from './Main/DripStoreLoginMain'
 
 interface Props {
-  className?: string;
 }
 
 export const DripStoreLogin: FC<Props> = memo(function DripStoreLogin(props = {}) {
