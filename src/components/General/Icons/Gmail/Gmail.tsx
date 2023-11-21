@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import type { FC } from 'react';
 
-import resets from '../../_resets.module.css';
-import classes from './Gmail1.module.css';
-import { GroupIcon } from './GroupIcon.js';
+import resets from '../../Buttons/_resets.module.css';
+import classes from './Gmail.module.css';
+import { GroupIcon } from './ImageLogo';
 
 interface Props {
   className?: string;
@@ -12,7 +12,7 @@ interface Props {
   };
 }
 /* @figmaId 476:2902 */
-export const Gmail1: FC<Props> = memo(function Gmail1(props = {}) {
+export const Gmail: FC<Props> = memo(function Gmail1(props = {}) {
   return (
     <div className={`${resets.storybrainResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}>
       <div className={classes.group}>

@@ -1,6 +1,6 @@
 import { memo, SVGProps } from 'react';
 
-const GroupIcon = (props: SVGProps<SVGSVGElement>) => (
+const ImageLogo = (props: SVGProps<SVGSVGElement>) => (
   <svg preserveAspectRatio='none' viewBox='0 0 24 18' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
     <path
       d='M1.63636 18.0022H5.45456V8.72948L2.95434 4.36364L0 4.63856V16.3658C0 17.2699 0.732281 18.0022 1.63636 18.0022Z'
@@ -26,5 +26,5 @@ const GroupIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-const Memo = memo(GroupIcon);
+const Memo = memo(ImageLogo);
 export { Memo as GroupIcon };

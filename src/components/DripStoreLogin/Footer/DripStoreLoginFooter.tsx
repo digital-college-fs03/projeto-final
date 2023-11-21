@@ -1,5 +1,5 @@
 import classes from './DripStoreLoginFooter.module.css'
-import { Group53511Icon } from '../Group53511Icon.js'
+import { Group53511Icon } from '../trash/Group53511Icon'
 import { DripStoreLoginFooterLogo } from './DripStoreLoginFooterLogo.js'
 import { DripStoreLoginFooterSeparatorIcon } from './DripStoreLoginFooterSeparatorIcon.js'
 

@@ -1,0 +1,112 @@
+
+.DripStoreLoginMain {
+    position: relative;
+    padding: 50px 100px;
+}
+
+.DripStoreLoginMainForm {
+    width: 583px;
+    align-items: flex-start;
+    padding: 30px;
+    border-radius: 4px;
+    background-color: #fff;
+    height: min-content;
+    color: #474747;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+
+.DripStoreLoginMainFormWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.DripStoreLoginMainFormTitle {
+    width: 523px;
+}
+
+.DripStoreLoginMainFormTitleCaption {
+    color: #1f1f1f;
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    height: min-content;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+}
+
+.DripStoreLoginMainFormTitleSignUp {
+    height: min-content;
+    align-self: flex-start;
+    margin: 0 0 20px 0;
+}
+
+.DripStoreLoginMainFormTitleSignUp p {
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.75px;
+}
+
+.DripStoreLoginMainFormTitleSignUp p a {
+    text-decoration: underline;
+}
+
+.DripStoreLoginMainFormBody {
+    display: block;
+    overflow: visible;
+}
+
+.DripStoreLoginMainFormBody label {
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: bold;
+    letter-spacing: 0.75px;
+    margin: 20px 0;
+}
+
+.DripStoreLoginMainFormBody div {
+    margin: 0 0 20px 0;
+}
+
+.DripStoreLoginMainFormBody input {
+    height: 60px;
+    border-radius: 8px;
+    color: #666;
+    font-size: 16px;
+    line-height: 28px;
+    background-color: #f8f8f8;
+    width: 100%;
+    padding: 10px 20px;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+}
+
+.DripStoreLoginMainFormBody input::placeholder {
+    opacity: 0.5;
+}
+
+.DripStoreLoginMainFormRemember {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+}
+
+.DripStoreLoginMainFormSignIn {
+    margin: 20px 0;
+}
+
+.DripStoreLoginMainFormBottom {
+    display: flex;
+}
+
+.DripStoreLoginMainFormBottomIcons {
+    display: flex;
+    width: 72px;
+    height: 24px;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}

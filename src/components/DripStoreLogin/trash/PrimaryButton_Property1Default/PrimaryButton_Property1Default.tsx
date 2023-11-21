@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import type { FC, ReactNode } from 'react';
 
-import resets from '../../_resets.module.css';
+import resets from '../../../General/Buttons/_resets.module.css';
 import classes from './PrimaryButton_Property1Default.module.css';
-import { Rectangle156Icon } from './Rectangle156Icon.js';
+import { Rectangle156Icon } from './Rectangle156Icon';
 
 interface Props {
   className?: string;

@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import type { FC } from 'react';
 
-import resets from '../../_resets.module.css';
-import { DropWithShine1Icon } from './DropWithShine1Icon.js';
+import resets from '../../../General/Buttons/_resets.module.css';
+import { DropWithShine1Icon } from './DropWithShine1Icon';
 import classes from './Group53580.module.css';
 
 interface Props {

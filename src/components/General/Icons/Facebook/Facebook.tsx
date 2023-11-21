@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import type { FC } from 'react';
 
-import resets from '../../_resets.module.css';
-import classes from './FacebookOriginal.module.css';
-import { VectorIcon2 } from './VectorIcon2.js';
-import { VectorIcon } from './VectorIcon.js';
+import resets from '../../Buttons/_resets.module.css';
+import classes from './Facebook.module.css';
+import { VectorIcon2 } from './ImageLogo';
+import { VectorIcon } from './ImageBody';
 
 interface Props {
   className?: string;
@@ -13,7 +13,7 @@ interface Props {
   };
 }
 /* @figmaId 476:2899 */
-export const FacebookOriginal: FC<Props> = memo(function FacebookOriginal(props = {}) {
+export const Facebook: FC<Props> = memo(function FacebookOriginal(props = {}) {
   return (
     <div className={`${resets.storybrainResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}>
       <div className={classes.vector}>
