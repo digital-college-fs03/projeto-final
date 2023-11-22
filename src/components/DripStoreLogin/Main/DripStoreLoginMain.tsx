@@ -10,22 +10,18 @@ interface Props {
 
 export const DripStoreLoginMain = function () {
   const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-  const clicarNoBotaoAcessarConta = () => {
+  const requestSignIn = () => {
     fetch(
       'https://webhook.site/f3b2ca4f-02fd-4a71-a448-cbf8fc574fd2',
       {
         method: 'POST',
-        body: JSON.stringify({ username: username })
+        body: JSON.stringify({ username, password })
       }
     )
   }
-  /**
-   *  <PrimaryButton
-   *     label="Acessar Conta"
-   *     onClick={clicarNoBotaoAcessarConta}
-   *  />
-   */
+
   return (
     <div className={classes.DripStoreLoginMain}>
 
@@ -57,6 +53,8 @@ export const DripStoreLoginMain = function () {
                 <input
                   type="text"
                   placeholder="Insira sua senha"
+                  onChange={(event) => setPassword(event.target.value)}
+                  value={password}
                 />
               </div>
             </div>
@@ -66,7 +64,7 @@ export const DripStoreLoginMain = function () {
             <div className={classes.DripStoreLoginMainFormSignIn}>
               <PrimaryButton
                 label="Acessar Conta"
-                onClick={clicarNoBotaoAcessarConta}
+                onClick={requestSignIn}
               />
             </div>
 
