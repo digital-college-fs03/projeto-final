@@ -1,14 +1,26 @@
-import classes from './DripStoreLoginMain.module.css'
-import { Facebook } from '../../General/Icons/Facebook/Facebook'
-import { Gmail } from '../../General/Icons/Gmail/Gmail'
-import { PrimaryButton } from '../../General/Buttons/PrimaryButton'
+import classes from './DripStoreLoginMain.module.css';
+import { Facebook } from '../../General/Icons/Facebook/Facebook';
+import { Gmail } from '../../General/Icons/Gmail/Gmail';
+import { PrimaryButton } from '../../General/Buttons/PrimaryButton';
+import { useState } from 'react';
 
 interface Props {
   className?: string;
 }
 
-/* @figmaId 474:841 */
+const [username, setUsername] = useState('')
+
 export const DripStoreLoginMain = function () {
+  // https://webhook.site/f3b2ca4f-02fd-4a71-a448-cbf8fc574fd2
+  const clicarNoBotaoAcessarConta = () => {
+    fetch('https://webhook.site/f3b2ca4f-02fd-4a71-a448-cbf8fc574fd2')
+  }
+  /**
+   *  <PrimaryButton
+   *     label="Acessar Conta"
+   *     onClick={clicarNoBotaoAcessarConta}
+   *  />
+   */
   return (
     <div className={classes.DripStoreLoginMain}>
 
@@ -31,6 +43,8 @@ export const DripStoreLoginMain = function () {
                 <input
                   type="text"
                   placeholder="Insira seu login ou email"
+                  onChange={(event) => setUsername(event.target.value)}
+                  value={username}
                 />
               </div>
               <label>Senha *</label>
@@ -45,7 +59,10 @@ export const DripStoreLoginMain = function () {
             <div className={classes.DripStoreLoginMainFormRemember}>Esqueci minha senha</div>
 
             <div className={classes.DripStoreLoginMainFormSignIn}>
-              <PrimaryButton label="Acessar Conta" />
+              <PrimaryButton
+                label="Acessar Conta"
+                onClick={clicarNoBotaoAcessarConta}
+              />
             </div>
 
             <div className={classes.DripStoreLoginMainFormBottom}>
