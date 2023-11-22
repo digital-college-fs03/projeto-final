@@ -8,12 +8,17 @@ interface Props {
   className?: string;
 }
 
-const [username, setUsername] = useState('')
-
 export const DripStoreLoginMain = function () {
-  // https://webhook.site/f3b2ca4f-02fd-4a71-a448-cbf8fc574fd2
+  const [username, setUsername] = useState('')
+
   const clicarNoBotaoAcessarConta = () => {
-    fetch('https://webhook.site/f3b2ca4f-02fd-4a71-a448-cbf8fc574fd2')
+    fetch(
+      'https://webhook.site/f3b2ca4f-02fd-4a71-a448-cbf8fc574fd2',
+      {
+        method: 'POST',
+        body: JSON.stringify({ username: username })
+      }
+    )
   }
   /**
    *  <PrimaryButton
