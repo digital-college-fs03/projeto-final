@@ -9,17 +9,23 @@ interface Props {
 }
 
 export const DripStoreLoginMain = function () {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('user1')
+  const [password, setPassword] = useState('pass1')
 
   const requestSignIn = () => {
     fetch(
-      'https://webhook.site/f3b2ca4f-02fd-4a71-a448-cbf8fc574fd2',
+      'http://localhost:5174/api/v1/login',
       {
+        headers: {
+          'Content-Type': 'application/json',
+        },
         method: 'POST',
         body: JSON.stringify({ username, password })
       }
     )
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((data) => console.log(data))
   }
 
   return (
