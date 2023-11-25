@@ -9,23 +9,36 @@ interface Props {
 }
 
 export const DripStoreLoginMain = function () {
-  const [username, setUsername] = useState('user1')
-  const [password, setPassword] = useState('pass1')
+  const [username, setUsername] = useState('wilcorrea');
+  const [password, setPassword] = useState('aq1sw2de3');
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState('');
 
-  const requestSignIn = () => {
-    fetch(
-      'http://localhost:5174/api/v1/login',
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({ username, password })
+  const requestSignIn = async () => {
+    try {
+      const response = await fetch(
+        'http://localhost:5174/api/v1/login',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+          body: JSON.stringify({ username, password })
+        }
+      );
+      const data = await response.json();
+
+      setError(!response.ok);
+      setMessage(data.message);
+
+    } catch (exception) {
+      setError(true);
+      if (typeof exception === 'string') {
+        setMessage(exception);
+      } else if (exception instanceof Error) {
+        setMessage(exception.message);
       }
-    )
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((data) => console.log(data))
+    }
   }
 
   return (
@@ -73,6 +86,10 @@ export const DripStoreLoginMain = function () {
                 onClick={requestSignIn}
               />
             </div>
+
+            {error && (
+              <div className={classes.DripStoreLoginMainFormError}>{message}</div>
+            )}
 
             <div className={classes.DripStoreLoginMainFormBottom}>
               <span>Ou faça login com</span>
