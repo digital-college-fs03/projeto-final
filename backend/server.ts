@@ -1,17 +1,24 @@
 // importa o json-server e o bcrypt da pasta node_modules
-const server = require('json-server')
-const bcrypt = require('bcrypt')
+import * as jsonServer from 'json-server'
+import * as bodyParser from 'body-parser'
+import * as bcrypt from 'bcrypt'
+import { JsonServerRouter } from 'json-server'
+
+// declara a estrutura do banco que está sendo usado pelo json-server
+interface CustomDB {
+  users: { id: number; username: string; password: string }[];
+}
 
 // cria o servidor que vai rodar na porta 5174 e lidar com os requests
-const app = server.create()
+const app = jsonServer.create()
 // cria um router para lidar com as requisições padrão do json-server
-const router = server.router('db.json')
+const router = jsonServer.router('db.json') as JsonServerRouter<CustomDB>
 // cria um middleware que trata necessidades comuns de uma API
-const middlewares = server.defaults()
+const middlewares = jsonServer.defaults()
 
 // adiciona o middleware e o parser de json ao servidor
 app.use(middlewares)
-app.use(server.bodyParser)
+app.use(bodyParser.json())
 
 // cria um endpoint para o login
 app.post('/api/v1/login', (request, response) => {
@@ -37,7 +44,9 @@ app.post('/api/v1/login', (request, response) => {
 // cria um endpoint para listar os usuários
 app.get('/api/v1/users', (request, response) => {
   const users = router.db.get('users').value()
-  response.status(200).json({ status: 'success', data: users })
+  response
+    .status(200)
+    .json({ status: 'success', data: users })
 })
 
 // registra o middleware das rotas padrão do json-server
