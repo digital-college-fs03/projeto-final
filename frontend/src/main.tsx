@@ -5,7 +5,7 @@ import { App } from './App'
 import './resets.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { DripStoreLogin } from './components/Pages/Login/DripStoreLogin'
-import resets from './components/General/Buttons/_resets.module.css'
+import resets from './components/General/_resets.module.css'
 import classes from './App.module.css'
 
 const router = createBrowserRouter([
