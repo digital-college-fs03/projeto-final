@@ -38,76 +38,74 @@ export const DripStoreLogin = function () {
   }
 
   return (
-    <div className={classes.root}>
-      <div className={classes.DripStoreLogin}>
+    <div className={classes.DripStoreLogin}>
 
-        <div className={classes.DripStoreLoginContainer}>
+      <div className={classes.DripStoreLoginContainer}>
 
-          <div className={classes.DripStoreLoginForm}>
-            <div className={classes.DripStoreLoginFormWrapper}>
-              <div className={classes.DripStoreLoginFormTitle}>
-                <div className={classes.DripStoreLoginFormTitleCaption}>Acesse sua conta</div>
-                <div className={classes.DripStoreLoginFormTitleSignUp}>
-                  <p>
-                    Novo cliente? Então registre-se <a href="">aqui</a>.
-                  </p>
-                </div>
+        <div className={classes.DripStoreLoginForm}>
+          <div className={classes.DripStoreLoginFormWrapper}>
+            <div className={classes.DripStoreLoginFormTitle}>
+              <div className={classes.DripStoreLoginFormTitleCaption}>Acesse sua conta</div>
+              <div className={classes.DripStoreLoginFormTitleSignUp}>
+                <p>
+                  Novo cliente? Então registre-se <a href="">aqui</a>.
+                </p>
               </div>
+            </div>
 
-              <div className={classes.DripStoreLoginFormBody}>
-                <label>Login *</label>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Insira seu login ou email"
-                    onChange={(event) => setUsername(event.target.value)}
-                    value={username}
-                  />
-                </div>
-                <label>Senha *</label>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Insira sua senha"
-                    onChange={(event) => setPassword(event.target.value)}
-                    value={password}
-                  />
-                </div>
-              </div>
-
-              <div className={classes.DripStoreLoginFormRemember}>Esqueci minha senha</div>
-
-              <div className={classes.DripStoreLoginFormSignIn}>
-                <PrimaryButton
-                  label="Acessar Conta"
-                  onClick={requestSignIn}
+            <div className={classes.DripStoreLoginFormBody}>
+              <label>Login *</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Insira seu login ou email"
+                  onChange={(event) => setUsername(event.target.value)}
+                  value={username}
                 />
               </div>
+              <label>Senha *</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Insira sua senha"
+                  onChange={(event) => setPassword(event.target.value)}
+                  value={password}
+                />
+              </div>
+            </div>
 
-              {error && (
-                <div className={classes.DripStoreLoginFormError}>{message}</div>
-              )}
+            <div className={classes.DripStoreLoginFormRemember}>Esqueci minha senha</div>
 
-              <div className={classes.DripStoreLoginFormBottom}>
-                <span>Ou faça login com</span>
-                <div className={classes.DripStoreLoginFormBottomIcons}>
-                  <Facebook />
-                  <Gmail />
-                </div>
+            <div className={classes.DripStoreLoginFormSignIn}>
+              <PrimaryButton
+                label="Acessar Conta"
+                onClick={requestSignIn}
+              />
+            </div>
+
+            {error && (
+              <div className={classes.DripStoreLoginFormError}>{message}</div>
+            )}
+
+            <div className={classes.DripStoreLoginFormBottom}>
+              <span>Ou faça login com</span>
+              <div className={classes.DripStoreLoginFormBottomIcons}>
+                <Facebook />
+                <Gmail />
               </div>
             </div>
           </div>
+        </div>
 
-          <div className={classes.DripStoreLoginShoes}>
-            <img
-              src="/assets/shoes.png"
-              alt="shoes"
-            />
-          </div>
-
+        <div className={classes.DripStoreLoginShoes}>
+          <img
+            src="/assets/shoes.png"
+            alt="shoes"
+          />
         </div>
 
       </div>
+
     </div>
   )
 }

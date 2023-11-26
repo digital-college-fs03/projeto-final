@@ -1,8 +1,19 @@
 .root {
-  height: 100%;
+  height: 100vh;
   font-family: sans-serif;
-  background-color: __backgroundColor__;
   flex-basis: 100%;
   overflow-y: auto;
-  /* __center__ */
+  background-color: #1f1f1f;
+}
+
+.main {
+  width: 100vw;
+  min-width: 320px;
+  min-height: calc(100vh - 80px - 460px);
+  align-items: flex-start;
+  background-image: linear-gradient(180deg, #b5b6f2ff 0%, #efefffff 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  overflow: auto;
 }
