@@ -1,4 +1,4 @@
-.DripStoreLoginHead {
+.DripStoreHead {
     height: min-content;
     width: 100%;
     padding: 25px 20px;
@@ -6,37 +6,37 @@
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
 }
 
-.DripStoreLoginHeadContainer {
+.DripStoreHeadContainer {
     flex-direction: column;
     align-items: flex-start;
     max-width: 1440px;
     margin: 0 auto;
 }
 
-.DripStoreLoginHeadWrapper {
+.DripStoreHeadWrapper {
     position: relative;
     width: 172.5px;
     height: 30px;
     display: flex;
 }
 
-.DripStoreLoginHeadBrand {
+.DripStoreHeadBrand {
     display: flex;
     align-items: center;
 }
 
-.DripStoreLoginHeadLogo {
+.DripStoreHeadLogo {
     width: 22.5px;
     height: 22.5px;
     overflow: visible;
 }
 
-.DripStoreLoginHeadIcon {
+.DripStoreHeadIcon {
     width: 100%;
     height: 100%;
 }
 
-.DripStoreLoginHeadCompany {
+.DripStoreHeadCompany {
     color: #c92071;
     font-size: 23.9877px;
     font-weight: 600;
