@@ -11,9 +11,10 @@
   min-width: 320px;
   min-height: calc(100vh - 80px - 460px);
   align-items: flex-start;
-  background-image: linear-gradient(180deg, #b5b6f2ff 0%, #efefffff 100%);
+  background-color: #F9F8FE;
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto;
+  box-shadow: inset 0 1px 6px 0 rgba(32, 33, 36, 0.28);
   overflow: auto;
 }

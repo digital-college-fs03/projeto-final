@@ -79,6 +79,7 @@ export const DripStoreLogin = function () {
             <div className={classes.DripStoreLoginFormSignIn}>
               <PrimaryButton
                 label="Acessar Conta"
+                fullWidth
                 onClick={requestSignIn}
               />
             </div>
