@@ -105,6 +105,14 @@
     margin: 20px 0;
 }
 
+.DripStoreLoginMainFormError {
+    background-color: #ff6868;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
 .DripStoreLoginMainFormBottom {
     display: flex;
 }
