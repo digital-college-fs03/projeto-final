@@ -1,6 +1,7 @@
 // importa o json-server e o bcrypt da pasta node_modules
 const server = require('json-server')
 const bcrypt = require('bcrypt')
+const knex = require('knex')
 
 // cria o servidor que vai rodar na porta 5174 e lidar com os requests
 const app = server.create()
@@ -13,12 +14,25 @@ const middlewares = server.defaults()
 app.use(middlewares)
 app.use(server.bodyParser)
 
+const queryBuilder = knex({
+  client: 'mysql',
+  connection: {
+    host: 'devi.tools',
+    port: 3360,
+    database: 'database',
+    user: 'root',
+    password: 'root',
+  }
+})
+
 // cria um endpoint para o login
 app.post('/api/v1/login', (request, response) => {
   // pega os dados do request
   const { username, password } = request.body
   // busca os usuários no banco
-  const users = router.db.get('users').value()
+  const users = queryBuilder('users')
+    .where('username', username)
+    .first()
   // busca o usuário com o username igual ao do request
   const user = users.find((row) => row.username === username)
   // verifica se o usuário existe e se a senha está correta
