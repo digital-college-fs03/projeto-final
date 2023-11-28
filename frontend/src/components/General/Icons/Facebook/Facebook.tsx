@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { FC } from 'react';
 
-import resets from '../../_resets.module.css';
+import resets from '../../../_resets.module.css';
 import classes from './Facebook.module.css';
 import { VectorIcon2 } from './ImageLogo';
 import { VectorIcon } from './ImageBody';

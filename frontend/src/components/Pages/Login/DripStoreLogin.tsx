@@ -1,10 +1,15 @@
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import classes from './DripStoreLogin.module.css'
+
 import { Facebook } from '../../General/Icons/Facebook/Facebook'
 import { Gmail } from '../../General/Icons/Gmail/Gmail'
 import { PrimaryButton } from '../../General/Buttons/PrimaryButton'
-import { useState } from 'react'
 
 export const DripStoreLogin = function () {
+  const { t } = useTranslation()
+
   const [username, setUsername] = useState('wilcorrea')
   const [password, setPassword] = useState('aq1sw2de3')
   const [error, setError] = useState(false)
@@ -45,40 +50,40 @@ export const DripStoreLogin = function () {
         <div className={classes.DripStoreLoginForm}>
           <div className={classes.DripStoreLoginFormWrapper}>
             <div className={classes.DripStoreLoginFormTitle}>
-              <div className={classes.DripStoreLoginFormTitleCaption}>Acesse sua conta</div>
+              <div className={classes.DripStoreLoginFormTitleCaption}>{t('login.title.caption')}</div>
               <div className={classes.DripStoreLoginFormTitleSignUp}>
                 <p>
-                  Novo cliente? Então registre-se <a href="">aqui</a>.
+                {t('login.new.text')} <a href="">{t('login.new.link')}</a>.
                 </p>
               </div>
             </div>
 
             <div className={classes.DripStoreLoginFormBody}>
-              <label>Login *</label>
+              <label>{t('login.username.label')} *</label>
               <div>
                 <input
                   type="text"
-                  placeholder="Insira seu login ou email"
+                  placeholder={t('login.username.placeholder')}
                   onChange={(event) => setUsername(event.target.value)}
                   value={username}
                 />
               </div>
-              <label>Senha *</label>
+              <label>{t('login.password.label')} *</label>
               <div>
                 <input
                   type="text"
-                  placeholder="Insira sua senha"
+                  placeholder={t('login.password.placeholder')}
                   onChange={(event) => setPassword(event.target.value)}
                   value={password}
                 />
               </div>
             </div>
 
-            <div className={classes.DripStoreLoginFormRemember}>Esqueci minha senha</div>
+            <div className={classes.DripStoreLoginFormRemember}>{t('login.forgot')}</div>
 
             <div className={classes.DripStoreLoginFormSignIn}>
               <PrimaryButton
-                label="Acessar Conta"
+                label={t('login.button')}
                 fullWidth
                 onClick={requestSignIn}
               />
@@ -89,7 +94,7 @@ export const DripStoreLogin = function () {
             )}
 
             <div className={classes.DripStoreLoginFormBottom}>
-              <span>Ou faça login com</span>
+              <span>{t('login.oauth')}</span>
               <div className={classes.DripStoreLoginFormBottomIcons}>
                 <Facebook />
                 <Gmail />

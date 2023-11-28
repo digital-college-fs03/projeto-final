@@ -1,0 +1,20 @@
+{
+  "title": {
+    "caption": "Acesse sua conta"
+  },
+  "new": {
+    "text": "Novo cliente? Então registre-se",
+    "link": "aqui"
+  },
+  "username": {
+    "label": "Login",
+    "placeholder": "Insira seu login ou email"
+  },
+  "password": {
+    "label": "Senha",
+    "placeholder": "Insira sua senha"
+  },
+  "forgot": "Esqueci minha senha",
+  "button": "Acesse sua conta",
+  "oauth": "Ou faça login com"
+}
