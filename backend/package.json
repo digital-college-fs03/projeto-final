@@ -5,14 +5,17 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.ts"
+    "start": "nodemon server.js",
+    "ts:start": "nodemon server.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
-    "json-server": "^0.17.4"
+    "json-server": "^0.17.4",
+    "knex": "^3.0.1",
+    "mysql2": "^3.6.5"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

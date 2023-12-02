@@ -1,6 +1,7 @@
 // importa o json-server e o bcrypt da pasta node_modules
 const server = require('json-server')
 const bcrypt = require('bcrypt')
+const knex = require('knex')
 
 // cria o servidor que vai rodar na porta 5174 e lidar com os requests
 const app = server.create()
@@ -13,19 +14,34 @@ const middlewares = server.defaults()
 app.use(middlewares)
 app.use(server.bodyParser)
 
+const queryBuilder = knex({
+  client: 'mysql2',
+  connection: {
+    host: 'devi.tools',
+    port: 3360,
+    database: 'database',
+    user: 'root',
+    password: 'root',
+  }
+})
+
 // cria um endpoint para o login
-app.post('/api/v1/login', (request, response) => {
+app.post('/api/v1/login', async (request, response) => {
   // pega os dados do request
   const { username, password } = request.body
-  // busca os usuários no banco
-  const users = router.db.get('users').value()
-  // busca o usuário com o username igual ao do request
-  const user = users.find((row) => row.username === username)
-  // verifica se o usuário existe e se a senha está correta
+  // busca o usuário no banco
+  const user = await queryBuilder
+    .select('id', 'username', 'password')
+    .from('users')
+    .where('username', username)
+    .first()
+
+    // verifica se o usuário existe e se a senha está correta
   if (user && bcrypt.compareSync(password, user.password)) {
+    const { id, username } = user
     response
       .status(200)
-      .json({ status: 'success', data: user })
+      .json({ status: 'success', data: { id, username } })
     return
   }
   // se não, retorna um erro
@@ -34,10 +50,20 @@ app.post('/api/v1/login', (request, response) => {
     .json({ status: 'error', message: 'Invalid credentials' })
 })
 
-// cria um endpoint para listar os usuários
+// cria um endpoint para listar os usuários usando o json-server
 app.get('/api/v1/users', (request, response) => {
   const users = router.db.get('users').value()
-  response.status(200).json({ status: 'success', data: users })
+  response
+    .status(200)
+    .json({ status: 'success', data: users })
+})
+
+// cria um endpoint para gerar o hash da senha
+app.get('/api/v1/hash', (request, response) => {
+  const { password } = request.query
+  response
+    .status(200)
+    .json({ status: 'success', data: bcrypt.hashSync(password, 10) })
 })
 
 // registra o middleware das rotas padrão do json-server

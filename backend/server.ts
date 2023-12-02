@@ -1,18 +1,28 @@
 // importa o json-server e o bcrypt da pasta node_modules
 import * as jsonServer from 'json-server'
-import * as bodyParser from 'body-parser'
-import * as bcrypt from 'bcrypt'
 import { JsonServerRouter } from 'json-server'
 
+import * as bodyParser from 'body-parser'
+import * as bcrypt from 'bcrypt'
+
+import knex from 'knex'
+
+// declara a estrutra da entidade usuário
+interface User {
+  id: number;
+  username: string;
+  password: string;
+}
+
 // declara a estrutura do banco que está sendo usado pelo json-server
-interface CustomDB {
-  users: { id: number; username: string; password: string }[];
+interface Database {
+  users: User[];
 }
 
 // cria o servidor que vai rodar na porta 5174 e lidar com os requests
 const app = jsonServer.create()
 // cria um router para lidar com as requisições padrão do json-server
-const router = jsonServer.router('db.json') as JsonServerRouter<CustomDB>
+const router = jsonServer.router('db.json') as JsonServerRouter<Database>
 // cria um middleware que trata necessidades comuns de uma API
 const middlewares = jsonServer.defaults()
 
@@ -20,14 +30,27 @@ const middlewares = jsonServer.defaults()
 app.use(middlewares)
 app.use(bodyParser.json())
 
+const queryBuilder = knex({
+  client: 'mysql2',
+  connection: {
+    host: 'devi.tools',
+    port: 3360,
+    database: 'database',
+    user: 'root',
+    password: 'root',
+  }
+})
+
 // cria um endpoint para o login
-app.post('/api/v1/login', (request, response) => {
+app.post('/api/v1/login', async (request, response) => {
   // pega os dados do request
   const { username, password } = request.body
   // busca os usuários no banco
-  const users = router.db.get('users').value()
-  // busca o usuário com o username igual ao do request
-  const user = users.find((row) => row.username === username)
+  const user = await queryBuilder
+    .select('id', 'username', 'password')
+    .from<User>('users')
+    .where('username', username)
+    .first()
   // verifica se o usuário existe e se a senha está correta
   if (user && bcrypt.compareSync(password, user.password)) {
     response
