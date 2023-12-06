@@ -1,9 +1,12 @@
 import { memo } from 'react';
 import type { FC } from 'react';
+import { Outlet } from 'react-router-dom';
+
+import { DripStoreLoginHead } from './components/DripStoreLogin/Head/DripStoreLoginHead';
+import { DripStoreLoginFooter } from './components/DripStoreLogin/Footer/DripStoreLoginFooter';
 
 import classes from './App.module.css';
 import resets from './components/General/Buttons/_resets.module.css';
-import { DripStoreLogin } from './components/DripStoreLogin/DripStoreLogin';
 
 interface Props {
   className?: string;
@@ -11,7 +14,9 @@ interface Props {
 export const App: FC<Props> = memo(function App(props = {}) {
   return (
     <div className={`${resets.storybrainResets} ${classes.root}`}>
-      <DripStoreLogin />
+      <DripStoreLoginHead/>
+      <Outlet />
+      <DripStoreLoginFooter/>
     </div>
   );
 });
