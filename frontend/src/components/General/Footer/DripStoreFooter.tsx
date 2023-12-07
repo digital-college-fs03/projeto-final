@@ -1,8 +1,8 @@
-import classes from './DripStoreLoginFooter.module.css'
-import { DripStoreLoginFooterLogo } from './DripStoreLoginFooterLogo.js'
-import { DripStoreLoginFooterSeparatorIcon } from './DripStoreLoginFooterSeparatorIcon.js'
+import classes from './DripStoreFooter.module.css'
+import { DripStoreLoginFooterLogo } from './DripStoreFooterLogo'
+import { DripStoreLoginFooterSeparatorIcon } from './DripStoreFooterSeparatorIcon'
 
-export const DripStoreLoginFooter = function () {
+export const DripStoreFooter = function () {
   return (
     <div className={classes.DripStoreLoginFooter}>
       <div className={classes.DripStoreLoginFooterContainer}>

@@ -1,17 +1,18 @@
-import { memo } from 'react';
-import type { FC } from 'react';
+import { memo } from 'react'
+import { Outlet } from 'react-router-dom'
+import classes from './App.module.css'
 
-import classes from './App.module.css';
-import resets from './components/General/Buttons/_resets.module.css';
-import { DripStoreLogin } from './components/DripStoreLogin/DripStoreLogin';
+import { DripStoreHead } from './components/General/Head/DripStoreHead'
+import { DripStoreFooter } from './components/General/Footer/DripStoreFooter'
 
-interface Props {
-  className?: string;
-}
-export const App: FC<Props> = memo(function App(props = {}) {
+export const App = memo(function App () {
   return (
-    <div className={`${resets.storybrainResets} ${classes.root}`}>
-      <DripStoreLogin />
-    </div>
-  );
-});
+    <>
+      <DripStoreHead />
+      <div className={classes.main}>
+        <Outlet />
+      </div>
+      <DripStoreFooter />
+    </>
+  )
+})
