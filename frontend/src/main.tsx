@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/auth/login',
+        path: '/login',
         element: <DripStoreLogin />,
       }
     ]
