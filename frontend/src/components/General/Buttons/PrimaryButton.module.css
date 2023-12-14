@@ -7,7 +7,7 @@
     'Liberation Sans', sans-serif;
     letter-spacing: 0.75px;
     text-align: center;
-    background-color: #C92071;
+    background-color: var(--color-primary);
     display: block;
     border-radius: 8px;
     background-position: center;

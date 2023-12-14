@@ -1,26 +1,25 @@
 .DripStoreLoginFooter {
-    background-color: #1f1f1f;
-    color: #fff;
-    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
+    background-color: var(--color-gray-dark);
+    color: var(--background-color-gray-dark);
+    font-family: var(--font-family);
     padding: 40px 20px 30px 20px;
 }
 
 .DripStoreLoginFooter h4 {
-    font-size: 20px;
+    font-size: 1.3rem; /* 20px */
     font-weight: 600;
     line-height: normal;
     margin: 0 0 20px 0;
 }
 
 .DripStoreLoginFooter h5 {
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
     font-weight: 300;
     line-height: 38px;
 }
 
 .DripStoreLoginFooterContainer {
-    max-width: 1440px;
+    max-width: var(--container-width);
     margin: 0 auto;
 }
 
