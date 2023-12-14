@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import classes from './DripStoreLogin.module.css'
-import common from '../../General/Common/DripStoreCommonForm.module.css'
+import common from '../../../styles/Common/DripStoreCommonForm.module.css'
 
 import { Facebook } from '../../General/Icons/Facebook/Facebook'
 import { Gmail } from '../../General/Icons/Gmail/Gmail'

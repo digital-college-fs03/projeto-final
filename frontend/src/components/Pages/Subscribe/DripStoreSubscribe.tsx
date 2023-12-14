@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { PrimaryButton } from '../../General/Buttons/PrimaryButton'
 import classes from './DripStoreSubscribe.module.css'
-import common from '../../General/Common/DripStoreCommonForm.module.css'
+import common from '../../../styles/Common/DripStoreCommonForm.module.css'
 import { Link } from 'react-router-dom'
 import { Status, subscribe } from '../../../services/Auth'
 
