@@ -11,7 +11,7 @@ export interface Content {
 }
 
 export const url = (path: string) => (import.meta.env.FRONTEND_API_URL + path)
-  .replace(/([^:]\/)\/+/g, "$1")
+  .replace(/([^:]\/)\/+/g, '$1')
 
 export const post = (path: string, data: Record<string, unknown>): Promise<Response> => {
   return fetch(
@@ -64,6 +64,25 @@ export const login = async (username: string, password: string): Promise<Content
   try {
     // faz a requisição
     response = await post('/api/v1/login', { username, password })
+    // extrai o conteúdo da resposta como JSON
+    content = await response.json()
+  } catch (error) {
+    // se houver um erro, retorna um Content de erro
+    return {
+      status: Status.error,
+      message: extractErrorMessage(error)
+    }
+  }
+  return parseContent(response, content)
+}
+
+export const subscribe = async (username: string, password: string): Promise<Content> => {
+  // inicializa variáveis de resposta e conteúdo
+  let response: Response
+  let content: Content = { status: Status.error, message: 'Unknown error' }
+  try {
+    // faz a requisição
+    response = await post('/api/v1/public/users', { username, password })
     // extrai o conteúdo da resposta como JSON
     content = await response.json()
   } catch (error) {

@@ -4,9 +4,11 @@ import { createRoot } from 'react-dom/client'
 import { App } from './App'
 import './resets.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { DripStoreLogin } from './components/Pages/Login/DripStoreLogin'
 import resets from './components/General/Buttons/_resets.module.css'
 import classes from './App.module.css'
+
+import { DripStoreLogin } from './components/Pages/Login/DripStoreLogin'
+import { DripStoreSubscribe } from './components/Pages/Subscribe/DripStoreSubscribe'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <DripStoreLogin />,
+      },
+      {
+        path: '/cadastro',
+        element: <DripStoreSubscribe />,
       }
     ]
   }
