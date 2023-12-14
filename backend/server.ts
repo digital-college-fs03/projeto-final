@@ -62,6 +62,31 @@ app.get('/api/v1/users', (request, response) => {
     .json({ status: 'success', data: users })
 })
 
+app.post('/api/v1/public/users', async (request, response) => {
+  const { username, password } = request.body
+
+  const user = await connection()
+    .select('id', 'username', 'password')
+    .from<User>('users')
+    .where('username', username)
+    .first()
+  if (user) {
+    response
+      .status(409)
+      .json({ status: 'error', message: 'User already exists' })
+    return
+  }
+
+  const hash = bcrypt.hashSync(password, 10)
+  const ids = await connection()
+    .into('users')
+    .insert({ username, password: hash })
+
+  response
+    .status(201)
+    .json({ status: 'success', data: { username } })
+})
+
 // registra o middleware das rotas padrão do json-server
 app.use(router)
 
