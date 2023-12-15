@@ -4,6 +4,7 @@ import { Gmail } from '../../General/Icons/Gmail/Gmail'
 import { PrimaryButton } from '../../General/Buttons/PrimaryButton'
 import { useState } from 'react'
 import { login, Status } from '../../../services/Auth'
+import { Link } from 'react-router-dom'
 
 export const DripStoreLogin = function () {
   const [username, setUsername] = useState(import.meta.env.FRONTEND_DEFAULT_USERNAME)
@@ -30,7 +31,7 @@ export const DripStoreLogin = function () {
               <div className={classes.DripStoreLoginFormTitleCaption}>Acesse sua conta</div>
               <div className={classes.DripStoreLoginFormTitleSignUp}>
                 <p>
-                  Novo cliente? Então registre-se <a href="">aqui</a>.
+                  Novo cliente? Então registre-se <Link to="/cadastro">aqui</Link>.
                 </p>
               </div>
             </div>
