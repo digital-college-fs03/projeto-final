@@ -75,3 +75,22 @@ export const login = async (username: string, password: string): Promise<Content
   }
   return parseContent(response, content)
 }
+
+export const register = async (username: string, password: string) => {
+  // inicializa variáveis de resposta e conteúdo
+  let response: Response
+  let content: Content = { status: Status.error, message: 'Unknown error' }
+  try {
+    // faz a requisição
+    response = await post('/api/v1/public/users', { username, password })
+    // extrai o conteúdo da resposta como JSON
+    content = await response.json()
+  } catch (error) {
+    // se houver um erro, retorna um Content de erro
+    return {
+      status: Status.error,
+      message: extractErrorMessage(error)
+    }
+  }
+  return parseContent(response, content)
+}

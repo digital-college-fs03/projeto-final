@@ -54,9 +54,10 @@ app.post('/api/v1/login', async (request, response) => {
     .first()
   // verifica se o usuário existe e se a senha está correta
   if (user && bcrypt.compareSync(password, user.password)) {
+    const token = 'xxx'
     response
       .status(200)
-      .json({ status: 'success', data: user })
+      .json({ status: 'success', data: { username, token } })
     return
   }
   // se não, retorna um erro
@@ -71,6 +72,30 @@ app.get('/api/v1/users', (request, response) => {
   response
     .status(200)
     .json({ status: 'success', data: users })
+})
+
+app.post('/api/v1/public/users', async (request, response) => {
+  const { username, password } = request.body
+
+  const user = await queryBuilder
+    .select('id', 'username', 'password')
+    .from<User>('users')
+    .where('username', username)
+    .first()
+  if (user) {
+    response
+      .status(409)
+      .json({ status: 'error', message: 'User already exists' })
+    return
+  }
+  const hash = await bcrypt.hash(password, 10)
+  const result = await queryBuilder
+    .into('users')
+    .insert({ username, password: hash })
+  const id = result.shift()
+  response
+    .status(201)
+    .json({ status: 'success', data: { id, username } })
 })
 
 // registra o middleware das rotas padrão do json-server

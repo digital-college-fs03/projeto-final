@@ -1,0 +1,112 @@
+.DripStoreSubscribeContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: max-width 0.5s ease-in-out;
+  padding: 70px 20px;
+}
+
+.DripStoreCommonForm {
+    min-width: 580px;
+    align-items: flex-start;
+    padding: 30px;
+    border-radius: 4px;
+    background-color: #fff;
+    height: min-content;
+    color: #474747;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+    transition: min-width 200ms;
+    box-shadow: 2px 3px 8px 2px #dadada;
+  }
+  
+  .DripStoreCommonFormWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+  
+  .DripStoreCommonFormTitle {
+    display: block;
+  }
+  
+  .DripStoreCommonFormTitleCaption {
+    color: #1f1f1f;
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    height: min-content;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+  }
+  
+  .DripStoreCommonFormTitleSignUp {
+    height: min-content;
+    align-self: flex-start;
+    margin: 0 0 20px 0;
+  }
+  
+  .DripStoreCommonFormTitleSignUp p {
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.75px;
+  }
+  
+  .DripStoreCommonFormTitleSignUp p a {
+    text-decoration: underline;
+  }
+  
+  .DripStoreCommonFormBody {
+    display: block;
+    overflow: visible;
+  }
+  
+  .DripStoreCommonFormBody label {
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: bold;
+    letter-spacing: 0.75px;
+    margin: 20px 0;
+  }
+  
+  .DripStoreCommonFormBody div {
+    margin: 0 0 20px 0;
+  }
+  
+  .DripStoreCommonFormBody input {
+    height: 60px;
+    border-radius: 8px;
+    color: #666;
+    font-size: 16px;
+    line-height: 28px;
+    background-color: #f8f8f8;
+    width: 100%;
+    padding: 10px 20px;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  }
+  
+  .DripStoreCommonFormBody input::placeholder {
+    opacity: 0.5;
+  }
+  
+  .DripStoreCommonFormRemember {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+  }
+  
+  .DripStoreCommonFormSignIn {
+    margin: 20px 0;
+  }
+  
+  .DripStoreCommonFormError {
+    background-color: #ff6868;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+  }
