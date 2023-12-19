@@ -1,0 +1,68 @@
+.DripStoreSubscribeContainer {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 70px 20px;
+}
+
+.DripStoreSubscribeFormWrapper {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 8px #d6d6d6, 0 3px 4px #d6d6d6, 0 3px 3px -2px #d6d6d6
+}
+
+.DripStoreSubscribeFormWrapper h1 {
+    color: var(--color-gray-dark);
+    font-family: var(--font-family);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 20px 0;
+}
+
+.DripStoreSubscribeForm {
+    color: var(--color-gray-medium);
+    font-family: var(--font-family);
+    background-color: var(--background-color-gray-medium);
+    min-width: 580px;
+    align-items: flex-start;
+    padding: 30px;
+    border-radius: 4px;
+    height: min-content;
+    transition: min-width 200ms;
+}
+
+.DripStoreSubscribeFormTitleSignUp {
+    height: min-content;
+    align-self: flex-start;
+    margin: 0 0 20px 0;
+}
+
+.DripStoreSubscribeFormTitleSignUp p {
+    font-size: 0.9rem;
+    line-height: 28px;
+    letter-spacing: 0.75px;
+}
+
+.DripStoreSubscribeFormTitleSignUp p a {
+    text-decoration: underline;
+}
+
+.DripStoreSubscribeFormRequest {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 0 20px 0;
+}
+
+.DripStoreSubscribeFormError {
+    background-color: #ff6868;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+

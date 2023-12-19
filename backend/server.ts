@@ -3,8 +3,8 @@ import * as jsonServer from 'json-server'
 import { JsonServerRouter } from 'json-server'
 import * as bodyParser from 'body-parser'
 import * as bcrypt from 'bcrypt'
-import knex from 'knex'
 import { loadEnv } from './config/env'
+import { connection } from './config/database'
 
 loadEnv()
 
@@ -31,23 +31,12 @@ const middlewares = jsonServer.defaults()
 app.use(middlewares)
 app.use(bodyParser.json())
 
-const queryBuilder = knex({
-  client: process.env.BACKEND_DB_CLIENT || 'mysql2',
-  connection: {
-    host: process.env.BACKEND_DB_HOST || 'localhost',
-    port: parseInt(process.env.BACKEND_DB_PORT || '3306'),
-    database: process.env.BACKEND_DB_DATABASE || 'backend',
-    user: process.env.BACKEND_DB_USER || 'root',
-    password: process.env.BACKEND_DB_PASSWORD || 'root',
-  }
-})
-
 // cria um endpoint para o login
 app.post('/api/v1/login', async (request, response) => {
   // pega os dados do request
   const { username, password } = request.body
   // busca os usuários no banco
-  const user = await queryBuilder
+  const user = await connection()
     .select('id', 'username', 'password')
     .from<User>('users')
     .where('username', username)
@@ -71,6 +60,31 @@ app.get('/api/v1/users', (request, response) => {
   response
     .status(200)
     .json({ status: 'success', data: users })
+})
+
+app.post('/api/v1/public/users', async (request, response) => {
+  const { username, password } = request.body
+
+  const user = await connection()
+    .select('id', 'username', 'password')
+    .from<User>('users')
+    .where('username', username)
+    .first()
+  if (user) {
+    response
+      .status(409)
+      .json({ status: 'error', message: 'User already exists' })
+    return
+  }
+
+  const hash = bcrypt.hashSync(password, 10)
+  const ids = await connection()
+    .into('users')
+    .insert({ username, password: hash })
+
+  response
+    .status(201)
+    .json({ status: 'success', data: { username } })
 })
 
 // registra o middleware das rotas padrão do json-server

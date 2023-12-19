@@ -1,4 +1,8 @@
+import { Link } from 'react-router-dom'
+
 import classes from './DripStoreLogin.module.css'
+import common from '../../../styles/Common/DripStoreCommonForm.module.css'
+
 import { Facebook } from '../../General/Icons/Facebook/Facebook'
 import { Gmail } from '../../General/Icons/Gmail/Gmail'
 import { PrimaryButton } from '../../General/Buttons/PrimaryButton'
@@ -30,12 +34,12 @@ export const DripStoreLogin = function () {
               <div className={classes.DripStoreLoginFormTitleCaption}>Acesse sua conta</div>
               <div className={classes.DripStoreLoginFormTitleSignUp}>
                 <p>
-                  Novo cliente? Então registre-se <a href="">aqui</a>.
+                  Novo cliente? Então registre-se <Link to="/cadastro">aqui</Link>.
                 </p>
               </div>
             </div>
 
-            <div className={classes.DripStoreLoginFormBody}>
+            <div className={common.DripStoreCommonFormBody}>
               <label>Login *</label>
               <div>
                 <input
