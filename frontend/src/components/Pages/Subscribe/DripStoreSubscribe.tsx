@@ -8,10 +8,11 @@ import { Status, subscribe } from '../../../services/Auth'
 export const DripStoreSubscribe = function () {
   const [username, setUsername] = useState(import.meta.env.FRONTEND_DEFAULT_USERNAME)
   const [password, setPassword] = useState(import.meta.env.FRONTEND_DEFAULT_PASSWORD)
+  
   const [message, setMessage] = useState('')
 
   const requestSubscribe = async () => {
-    console.table({ username, password})
+    console.table({ username, password })
     const content = await subscribe(username, password)
     let message = ''
     if (content.status === Status.error) {
@@ -54,9 +55,11 @@ export const DripStoreSubscribe = function () {
           />
         </div>
 
-        {message && (
-          <div className={classes.DripStoreSubscribeFormError}>{message}</div>
-        )}
+        {
+          message ?
+          <div className={classes.DripStoreSubscribeFormError}>{message}</div> :
+          null
+        }
 
         <hr />
         <div className={classes.DripStoreSubscribeFormTitleSignUp}>
