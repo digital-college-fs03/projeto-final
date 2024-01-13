@@ -7,6 +7,8 @@ import { loadEnv } from './config/env'
 import { connection } from './config/database'
 
 import { Subscribe } from './src/Controller/Subscribe'
+import { FindUser } from './src/Controller/User'
+import { CadastrarProduto } from './src/Controller/CadastrarProduto'
 
 loadEnv()
 
@@ -55,16 +57,14 @@ app.post('/api/v1/login', async (request, response) => {
     .status(401)
     .json({ status: 'error', message: 'Invalid credentials' })
 })
-
-// cria um endpoint para listar os usuários
-app.get('/api/v1/users', (request, response) => {
-  const users = router.db.get('users').value()
-  response
-    .status(200)
-    .json({ status: 'success', data: users })
-})
-
+ 
 app.post('/api/v1/public/users', Subscribe)
+
+app.post('/api/v1/produtos', CadastrarProduto )
+
+app.get('/api/v1/produtos', RecuperaProdutos )
+
+app.get('/api/v1/users', FindUser)
 
 // registra o middleware das rotas padrão do json-server
 app.use(router)
