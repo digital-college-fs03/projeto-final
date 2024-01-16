@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,8 +13,12 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+<<<<<<< Updated upstream
     "dotenv": "^16.3.1",
     "dotenv-expand": "^10.0.0",
+=======
+    "express": "^5.0.0-beta.1",
+>>>>>>> Stashed changes
     "json-server": "^0.17.4",
     "knex": "^3.0.1",
     "mysql2": "^3.6.5"
