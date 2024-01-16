@@ -1,10 +1,21 @@
+import { Link, useNavigate } from 'react-router-dom'
+import { authStore } from '../../../Store'
+import User from '../../../models/User'
+
 import classes from './DripStoreHead.module.css'
 import { DripStoreLoginLogo } from './DripStoreHeadLogo'
-import { Link, useNavigate } from 'react-router-dom'
 import { PrimaryButton } from '../Buttons/PrimaryButton'
 
 export const DripStoreHead = function () {
   const navigate = useNavigate()
+  const user = authStore.state.user as User | undefined
+
+  const signOutAndRedirect = async function () {
+    authStore.state.token = ''
+    authStore.state.user = undefined
+    navigate('/')
+  }
+
   return (
     <div className={classes.DripStoreHead}>
       <div className={classes.DripStoreHeadContainer}>
@@ -23,10 +34,21 @@ export const DripStoreHead = function () {
         <div className={classes.DripStoreHeadSeparator} />
 
         <div className={classes.DripStoreHeadRight}>
-          <PrimaryButton
-            label={'Entrar'}
-            onClick={() => navigate('/login')}
-          />
+          {
+            user ?
+              <div style={{display: 'flex'}}>
+                <span>{user?.username}</span>
+                <PrimaryButton
+                  label={'Sair'}
+                  onClick={signOutAndRedirect}
+                />
+              </div>
+              :
+              <PrimaryButton
+                label={'Entrar'}
+                onClick={() => navigate('/login')}
+              />
+          }
         </div>
       </div>
     </div>

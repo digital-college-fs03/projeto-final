@@ -1,18 +1,67 @@
-import { memo } from 'react'
-import { Outlet } from 'react-router-dom'
-import classes from './App.module.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { DripStoreHead } from './components/General/Head/DripStoreHead'
-import { DripStoreFooter } from './components/General/Footer/DripStoreFooter'
+import { LayoutComponent } from './components/Pages/DripStoreLayout'
+import { loginAction, LoginComponent, loginLoader } from './components/Pages/Login/DripStoreLogin'
+import { HomeComponent } from './components/Pages/Home/DripStoreHome'
+import { OrdersComponent, ordersLoader } from './components/Pages/Orders/DripStoreOrders'
+import { authStore } from './Store'
+import { me } from './services/Auth'
 
-export const App = memo(function App () {
+const semaphore: Record<string, boolean> = {}
+
+export default function App () {
+  const router = createBrowserRouter([
+    {
+      id: 'root',
+      path: '/',
+      element: <LayoutComponent />,
+      async loader () {
+        console.log('loader', authStore.state.token, authStore.state.user)
+        if (!authStore.state.token || authStore.state.user) {
+          return null
+        }
+        const loading = semaphore.me
+        if (loading) {
+          return null
+        }
+        try {
+          semaphore.me = true
+          const content = await me()
+          if (content?.data?.username) {
+            authStore.state.user = {
+              username: content?.data?.username as string
+            }
+          }
+        } catch (error) {
+        } finally {
+          semaphore.me = false
+        }
+        return null
+      },
+      children: [
+        {
+          index: true,
+          element: <HomeComponent />,
+        },
+        {
+          path: 'login',
+          action: loginAction,
+          loader: loginLoader,
+          element: <LoginComponent />,
+        },
+        {
+          path: 'orders',
+          loader: ordersLoader,
+          element: <OrdersComponent />,
+        },
+      ],
+    },
+  ])
+
   return (
-    <>
-      <DripStoreHead />
-      <div className={classes.main}>
-        <Outlet />
-      </div>
-      <DripStoreFooter />
-    </>
+    <RouterProvider
+      router={router}
+      fallbackElement={<p>Carregando...</p>}
+    />
   )
-})
+}

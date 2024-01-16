@@ -57,6 +57,12 @@ app.post('/api/v1/produtos', CadastrarProduto)
 
 app.get('/api/v1/users', FindUser)
 
+app.get('/api/v1/me', (request, response) => {
+  response
+    .status(200)
+    .json({ status: 'success', data: { username: 'wilcorrea' } })
+})
+
 // registra o middleware das rotas padrão do json-server
 app.use(router)
 
