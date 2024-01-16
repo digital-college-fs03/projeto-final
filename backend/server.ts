@@ -8,34 +8,31 @@ import { connection } from './config/database'
 
 import { Subscribe } from './src/Controller/Subscribe'
 import { FindUser } from './src/Controller/User'
+<<<<<<< HEAD
 import { CadastrarProduto } from './src/Controller/CadastrarProduto'
+=======
+import { CadastrarProduto } from './src/Controller/Produto'
+>>>>>>> f2a2021d75c5908b5ac6436441a141467152addd
 
 loadEnv()
 
-// declara a estrutura da entidade usuário
 interface User {
   id: number;
   username: string;
   password: string;
 }
 
-// declara a estrutura do banco que está sendo usado pelo json-server
 interface Database {
   users: User[];
 }
 
-// cria o servidor que vai rodar na porta 5174 e lidar com os requests
 const app = jsonServer.create()
-// cria um router para lidar com as requisições padrão do json-server
 const router = jsonServer.router('db.json') as JsonServerRouter<Database>
-// cria um middleware que trata necessidades comuns de uma API
 const middlewares = jsonServer.defaults()
 
-// adiciona o middleware e o parser de json ao servidor
 app.use(middlewares)
 app.use(bodyParser.json())
 
-// cria um endpoint para o login
 app.post('/api/v1/login', async (request, response) => {
   // pega os dados do request
   const { username, password } = request.body
@@ -57,12 +54,19 @@ app.post('/api/v1/login', async (request, response) => {
     .status(401)
     .json({ status: 'error', message: 'Invalid credentials' })
 })
+<<<<<<< HEAD
  
 app.post('/api/v1/public/users', Subscribe)
 
 app.post('/api/v1/produtos', CadastrarProduto )
 
 app.get('/api/v1/produtos', RecuperaProdutos )
+=======
+
+app.post('/api/v1/public/users', Subscribe)
+
+app.post('/api/v1/produtos', CadastrarProduto)
+>>>>>>> f2a2021d75c5908b5ac6436441a141467152addd
 
 app.get('/api/v1/users', FindUser)
 

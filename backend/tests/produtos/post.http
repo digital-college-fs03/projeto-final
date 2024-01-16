@@ -1,0 +1,11 @@
+POST http://localhost:5174/api/v1/produtos
+Content-Type: application/json
+
+{
+    "name": "K-Swiss V8",
+    "categoria": "Tênis",
+    "oferta": "30% OFF",
+    "genero": "Masculino",
+    "preco": 200,
+    "valor_com_desconto": 100
+}

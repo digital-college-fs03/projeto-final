@@ -1,16 +1,4 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "username": "wilcorrea",
-      "password": "$2b$10$52b84BJTYrMGmovs4PtLYu6mD5EFdOggwVE6lgpA50kIJoHEKw4Hu"
-    },
-    {
-      "id": 2,
-      "username": "jhon",
-      "password": "$2b$10$52b84BJTYrMGmovs4PtLYu6mD5EFdOggwVE6lgpA50kIJoHEKw4Hu"
-    }
-  ],
   "posts": [
     {
       "id": 1,
