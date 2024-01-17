@@ -8,7 +8,10 @@ import { connection } from './config/database'
 
 import { Subscribe } from './src/Controller/Subscribe'
 import { FindUser } from './src/Controller/User'
-import { CadastrarProduto } from './src/Controller/Produto'
+import {
+  CadastrarProduto,
+  RecuperarProdutos
+} from './src/Controller/Produto'
 
 loadEnv()
 
@@ -54,6 +57,7 @@ app.post('/api/v1/login', async (request, response) => {
 app.post('/api/v1/public/users', Subscribe)
 
 app.post('/api/v1/produtos', CadastrarProduto)
+app.get('/api/v1/produtos', RecuperarProdutos)
 
 app.get('/api/v1/users', FindUser)
 
