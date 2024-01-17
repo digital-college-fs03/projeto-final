@@ -8,11 +8,7 @@ import { connection } from './config/database'
 
 import { Subscribe } from './src/Controller/Subscribe'
 import { FindUser } from './src/Controller/User'
-<<<<<<< HEAD
-import { CadastrarProduto } from './src/Controller/CadastrarProduto'
-=======
 import { CadastrarProduto } from './src/Controller/Produto'
->>>>>>> f2a2021d75c5908b5ac6436441a141467152addd
 
 loadEnv()
 
@@ -54,19 +50,10 @@ app.post('/api/v1/login', async (request, response) => {
     .status(401)
     .json({ status: 'error', message: 'Invalid credentials' })
 })
-<<<<<<< HEAD
- 
-app.post('/api/v1/public/users', Subscribe)
-
-app.post('/api/v1/produtos', CadastrarProduto )
-
-app.get('/api/v1/produtos', RecuperaProdutos )
-=======
 
 app.post('/api/v1/public/users', Subscribe)
 
 app.post('/api/v1/produtos', CadastrarProduto)
->>>>>>> f2a2021d75c5908b5ac6436441a141467152addd
 
 app.get('/api/v1/users', FindUser)
 
