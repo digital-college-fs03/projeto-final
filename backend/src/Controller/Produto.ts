@@ -22,3 +22,25 @@ export async function CadastrarProduto(request: Request, response: Response) {
         }
     })
 }
+
+export async function RecuperarProdutos(request: Request, response: Response) {
+    const { nome } = request.query
+    const db = connection()
+
+    let produtos
+    if (nome) {
+        produtos = await db
+            .select()
+            .from('produtos')
+            .where('nome', 'like', `%${nome}%`)
+    } else {
+        produtos = await db
+            .select()
+            .from('produtos')
+    }
+
+    response.json({
+        status: 'success',
+        data: produtos
+    })
+}
