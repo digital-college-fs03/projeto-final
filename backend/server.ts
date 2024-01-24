@@ -1,68 +1,31 @@
-// importa o json-server e o bcrypt da pasta node_modules
-import * as jsonServer from 'json-server'
-import { JsonServerRouter } from 'json-server'
+import * as express from 'express'
+import { Application } from 'express'
 import * as bodyParser from 'body-parser'
-import * as bcrypt from 'bcrypt'
-import { loadEnv } from './config/env'
-import { connection } from './config/database'
+import * as cors from 'cors'
 
-import { Subscribe } from './src/Controller/Subscribe'
-import { FindUser } from './src/Controller/User'
-import {
-  CadastrarProduto,
-  RecuperarProdutos
-} from './src/Controller/Produto'
+import { loadEnv } from './config/env'
+import { FindUser, SignIn, Subscribe } from './src/Controller/User'
+import { CadastrarProduto, RecuperarProdutos } from './src/Controller/Produto'
+
+const app: Application = express()
 
 loadEnv()
 
-interface User {
-  id: number;
-  username: string;
-  password: string;
-}
-
-interface Database {
-  users: User[];
-}
-
-const app = jsonServer.create()
-const router = jsonServer.router('db.json') as JsonServerRouter<Database>
-const middlewares = jsonServer.defaults()
-
-app.use(middlewares)
 app.use(bodyParser.json())
+app.use(cors({
+  credentials: true,
+  origin: String(process.env.BACKEND_ORIGIN).split(','),
+}))
 
-app.post('/api/v1/login', async (request, response) => {
-  // pega os dados do request
-  const { username, password } = request.body
-  // busca os usuários no banco
-  const user = await connection()
-    .select('id', 'username', 'password')
-    .from<User>('users')
-    .where('username', username)
-    .first()
-  // verifica se o usuário existe e se a senha está correta
-  if (user && bcrypt.compareSync(password, user.password)) {
-    response
-      .status(200)
-      .json({ status: 'success', data: { username: user.username } })
-    return
-  }
-  // se não, retorna um erro
-  response
-    .status(401)
-    .json({ status: 'error', message: 'Invalid credentials' })
-})
-
+app.post('/api/v1/login', SignIn)
 app.post('/api/v1/public/users', Subscribe)
+app.get('/api/v1/users', FindUser)
 
 app.post('/api/v1/produtos', CadastrarProduto)
 app.get('/api/v1/produtos', RecuperarProdutos)
 
-app.get('/api/v1/users', FindUser)
-
-// registra o middleware das rotas padrão do json-server
-app.use(router)
-
 // inicia o servidor na porta 5174
-app.listen(5174, () => console.log('O servidor está rodando na porta http://localhost:5174'))
+app.listen(
+  5174,
+  () => console.log('O servidor está rodando na porta http://localhost:5174'),
+)
