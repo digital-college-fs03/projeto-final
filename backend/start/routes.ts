@@ -14,15 +14,24 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
 router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
+  return { hello: 'world' }
 })
 
-router.post('/login', LoginController)
+// cria o grupo de rotas /api/v1
+router.group(() => {
+  // define a rota de login
+  router.post('/login', LoginController)
 
-router.get('/public', () => 'esta rota é pública')
+  // cria o grupo de rotas protegidas
+  router.group(() => {
+    // define a rota de logout
+    router.post('/logout', () => {
+      return { status: 'success' }
+    })
 
-router.get('/private', () => 'esta rota é privada').use(middleware.auth({ guards: ['api'] }))
+    // define as rotas de gestão de usuários
+    router.resource('users', UserController).apiOnly()
+  }).use(middleware.auth({ guards: ['api'] }))
 
-router.resource('users', UserController).apiOnly()
+}).prefix('/api/v1')
+
