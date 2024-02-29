@@ -6,10 +6,10 @@ export function RootLayout () {
     <div>
       <ul>
         <li>
-          <Link to="/">Public Page</Link>
+          <Link to="/">Página Pública</Link>
         </li>
         <li>
-          <Link to="/protected">Protected Page</Link>
+          <Link to="/private">Página Privada</Link>
         </li>
       </ul>
       <AuthStatus />

@@ -25,7 +25,7 @@ export default function App () {
             element={<LoginPage />}
           />
           <Route
-            path="/protected"
+            path="/private"
             element={
               <RequireAuth>
                 <PrivatePage />

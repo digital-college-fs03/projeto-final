@@ -1,2 +1,0 @@
-GET http://localhost:5174/api/v1/produtos
-Content-Type: application/json
