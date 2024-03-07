@@ -3,7 +3,12 @@ import react from '@vitejs/plugin-react-swc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: { watch: { awaitWriteFinish: true } },
+  server: {
+    watch: {
+      awaitWriteFinish: true,
+    },
+    strictPort: true,
+  },
   plugins: [react()],
   envPrefix: 'FRONTEND_',
 })
