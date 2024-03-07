@@ -14,7 +14,7 @@ export function PublicPage () {
               <small>
                 Você está logado como <strong>{app.session?.username}</strong>
               </small>
-              <button onClick={app.auth.signOut}>Sair Fora do Rolê</button>
+              <button onClick={app.auth.signOut}>Sair</button>
             </>
           ) : (
             <small>

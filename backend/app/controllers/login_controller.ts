@@ -10,7 +10,10 @@ export default async function(http: HttpContext) {
   if (!username || !password) {
     return response.forbidden({ status: 'error', message })
   }
-  const user = await User.findByOrFail('email', username)
+  const user = await User.find('email', username)
+  if (!user) {
+    return response.forbidden({ status: 'error', message })
+  }
 
   const verified = await hash.verify(user.password, password)
   if (!verified) {
