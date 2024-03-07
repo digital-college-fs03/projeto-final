@@ -74,6 +74,15 @@ label>input {
     font-size: 1.1em;
 }
 
+p.error {
+    color: #ff6464;
+    font-weight: 500;
+}
+
+small {
+    font-size: 0.6em;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;

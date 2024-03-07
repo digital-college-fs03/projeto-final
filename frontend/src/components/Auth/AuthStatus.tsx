@@ -1,16 +1,16 @@
-import { useAuth } from '../../hooks'
+import { useApp } from '../../hooks'
 import { useNavigate } from 'react-router-dom'
 
 export function AuthStatus () {
-  const auth = useAuth()
+  const app = useApp()
   const navigate = useNavigate()
 
-  if (!auth.user) {
+  if (!app.session) {
     return <p>You are not logged in.</p>
   }
 
   const logout = async () => {
-    const ok = await auth.signOut()
+    const ok = await app.auth.signOut()
     if (!ok) {
       return
     }
@@ -19,7 +19,7 @@ export function AuthStatus () {
 
   return (
     <p>
-      Welcome {auth.user?.username}!{' '}
+      Welcome {app.session?.username}!{' '}
       <button
         onClick={logout}
       >

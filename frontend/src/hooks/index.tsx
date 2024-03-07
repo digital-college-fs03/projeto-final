@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { AuthContext } from '../components/Auth/AuthContext.tsx'
+import { AppContext } from '../components/App/AppContext.tsx'
 
-export function useAuth () {
-  return React.useContext(AuthContext)
+export function useApp () {
+  return React.useContext(AppContext)
 }

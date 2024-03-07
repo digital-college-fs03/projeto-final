@@ -1,56 +1,59 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import * as React from 'react'
-import { useAuth } from '../hooks'
+import { useApp } from '../hooks'
 import { useState } from 'react'
 
 export function LoginPage () {
   const navigate = useNavigate()
   const location = useLocation()
-  const auth = useAuth()
-  const [message, setMessage] = useState('')
+  const app = useApp()
+  const [error, setError] = useState('')
 
   const from = location.state?.from?.pathname || '/'
 
   async function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
-    setMessage('')
+    setError('')
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const username = formData.get('username') as string
     const password = formData.get('password') as string
 
     try {
-      const user = await auth.signIn(username, password)
+      const user = await app.auth.signIn(username, password)
       if (!user) {
-        setMessage('Usuário e/ou senha inválidos')
+        setError('Usuário e/ou senha inválidos')
         return
       }
       navigate(from, { replace: true })
     } catch (e) {
-      setMessage('Ocorreu um erro ao tentar fazer o login. Tente novamente.')
+      setError('Ocorreu um erro ao tentar fazer o login. Tente novamente.')
     }
   }
 
   return (
     <div>
-      <p>You must log in to view the page at {from}</p>
+      <p>É preciso estar conectado para acessar '{from}'</p>
 
       <form onSubmit={handleSubmit}>
         <label>
-          Username
+          Usuário
           <input
             name="username"
             type="text"
           />
         </label>
         <label>
-          Password
+          Senha
           <input
             name="password"
             type="password"
           />
         </label>
-        <button type="submit">Login</button>
-        {message && <p>{message}</p>}
+        <button type="submit">
+          Entrar
+        </button>
+
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   )

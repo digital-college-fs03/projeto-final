@@ -37,7 +37,7 @@ function parseContent (response: Response, content: Content): Content {
     // usando o conteúdo da resposta como mensagem de erro
     return {
       status: Status.error,
-      message: content.message || 'Unknown error'
+      message: content.message || response.statusText
     }
   }
   // senão retorna o conteúdo

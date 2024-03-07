@@ -1,18 +1,13 @@
-import { Link, Outlet } from 'react-router-dom'
-import { AuthStatus } from '../components/Auth/AuthStatus.tsx'
+import { Link, Outlet } from "react-router-dom";
 
 export function RootLayout () {
   return (
     <div>
-      <ul>
-        <li>
-          <Link to="/">Página Pública</Link>
-        </li>
-        <li>
-          <Link to="/private">Página Privada</Link>
-        </li>
-      </ul>
-      <AuthStatus />
+      <div>
+        <Link to="/">Pública</Link>
+        &nbsp;|&nbsp;
+        <Link to="/private">Privada</Link>
+      </div>
 
       <Outlet />
     </div>

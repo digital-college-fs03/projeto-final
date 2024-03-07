@@ -2,18 +2,16 @@ import { Route, Routes, } from 'react-router-dom'
 
 import { RootLayout } from './layouts/RootLayout.tsx'
 
-import { AuthProvider } from './providers/AuthProvider.tsx'
-import { RequireAuth } from './components/Auth/RequireAuth.tsx'
+import { AppProvider } from './providers/AppProvider.tsx'
+import { ProtectedRoute } from './components/Auth/ProtectedRoute.tsx'
 
 import { LoginPage } from './pages/LoginPage.tsx'
 import { PublicPage } from './pages/PublicPage.tsx'
 import { PrivatePage } from './pages/PrivatePage.tsx'
 
-import './App.css'
-
 export default function App () {
   return (
-    <AuthProvider>
+    <AppProvider>
       <Routes>
         <Route element={<RootLayout />}>
           <Route
@@ -24,16 +22,14 @@ export default function App () {
             path="/login"
             element={<LoginPage />}
           />
-          <Route
-            path="/private"
-            element={
-              <RequireAuth>
-                <PrivatePage />
-              </RequireAuth>
-            }
-          />
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/private"
+              element={<PrivatePage />}
+            />
+          </Route>
         </Route>
       </Routes>
-    </AuthProvider>
+    </AppProvider>
   )
 }
