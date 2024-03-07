@@ -1,18 +1,35 @@
-import { memo } from 'react'
-import { Outlet } from 'react-router-dom'
-import classes from './App.module.css'
+import { Route, Routes, } from 'react-router-dom'
 
-import { DripStoreHead } from './components/General/Head/DripStoreHead'
-import { DripStoreFooter } from './components/General/Footer/DripStoreFooter'
+import { RootLayout } from './layouts/RootLayout.tsx'
 
-export const App = memo(function App () {
+import { AppProvider } from './providers/AppProvider.tsx'
+import { ProtectedRoute } from './components/Auth/ProtectedRoute.tsx'
+
+import { LoginPage } from './pages/LoginPage.tsx'
+import { PublicPage } from './pages/PublicPage.tsx'
+import { PrivatePage } from './pages/PrivatePage.tsx'
+
+export default function App () {
   return (
-    <>
-      <DripStoreHead />
-      <div className={classes.main}>
-        <Outlet />
-      </div>
-      <DripStoreFooter />
-    </>
+    <AppProvider>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route
+            path="/"
+            element={<PublicPage />}
+          />
+          <Route
+            path="/login"
+            element={<LoginPage />}
+          />
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/private"
+              element={<PrivatePage />}
+            />
+          </Route>
+        </Route>
+      </Routes>
+    </AppProvider>
   )
-})
+}

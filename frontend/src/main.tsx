@@ -1,36 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
-import { App } from './App'
-import './resets.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import resets from './components/General/Buttons/_resets.module.css'
-import classes from './App.module.css'
+import './index.css'
+import App from './App'
 
-import { DripStoreLogin } from './components/Pages/Login/DripStoreLogin'
-import { DripStoreSubscribe } from './components/Pages/Subscribe/DripStoreSubscribe'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        path: '/login',
-        element: <DripStoreLogin />,
-      },
-      {
-        path: '/cadastro',
-        element: <DripStoreSubscribe />,
-      }
-    ]
-  }
-])
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <div className={`${resets.storybrainResets} ${classes.root}`}>
-      <RouterProvider router={router} />
-    </div>
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 )
