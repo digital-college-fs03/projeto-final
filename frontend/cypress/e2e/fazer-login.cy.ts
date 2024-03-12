@@ -34,6 +34,8 @@ describe('Login funcionando', () => {
     cy.wait('@login')
     cy.wait(100)
     cy.contains('Usuário e/ou senha inválidos')
+
+    cy.matchImageSnapshot('page 1')
   })
 
   it('Conexão bem sucedida', () => {
@@ -47,6 +49,8 @@ describe('Login funcionando', () => {
     cy.wait('@login')
     cy.wait(100)
     cy.contains('Eu sou uma página privada')
+
+    cy.matchImageSnapshot('page 2')
   })
 
   it('A sessão se mantém ao trocar de tela', () => {
@@ -62,5 +66,7 @@ describe('Login funcionando', () => {
     cy.contains('Pública').click()
     cy.contains('Você está logado como wilcorrea@gmail.com')
     cy.contains('Sair')
+
+    cy.matchImageSnapshot('page 3')
   })
 })
