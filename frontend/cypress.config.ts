@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
 import { addMatchImageSnapshotPlugin } from '@simonsmith/cypress-image-snapshot/plugin'
+import task from '@cypress/code-coverage/task'
 
 export default defineConfig({
   e2e: {
@@ -8,6 +9,8 @@ export default defineConfig({
     viewportHeight: 420,
     setupNodeEvents (on, config) {
       addMatchImageSnapshotPlugin(on)
+      task(on, config)
+      return config
     },
   },
 })
