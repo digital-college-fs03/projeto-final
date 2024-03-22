@@ -10,7 +10,7 @@ npm install
 
 A seguir rode o comando abaixo para iniciar o modo de desenvolvimento
 
-````
+```
 npm run start
 ```
 
