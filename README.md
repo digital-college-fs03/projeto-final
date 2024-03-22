@@ -14,6 +14,12 @@ A seguir rode o comando abaixo para iniciar o modo de desenvolvimento
 npm run start
 ```
 
-# Projeto Final
+# Alunos Sobreviventes 
 
-## Por onde começar
+## Daniel 
+## Guilherme
+## Sandro
+## Wagner 
+## Auricelio 
+## Alex 
+## Emannuel
