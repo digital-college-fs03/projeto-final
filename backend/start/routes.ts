@@ -14,7 +14,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
 router.get('/', async () => {
-  return { acabou: 'jessica' }
+  return { acabou: 'Jessica' }
 })
 
 // cria o grupo de rotas /api/v1
