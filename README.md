@@ -16,10 +16,10 @@ npm run start
 
 # Alunos Sobreviventes
 
-  ## Guilherme
-  ## Daniel
-  ## Sandro
-  ## Wagner
-  ## Emannuel
+## Guilherme
+## Daniel
+## Sandro
+## Wagner
+## Emannuel
 ## Auricelio
 ## 
