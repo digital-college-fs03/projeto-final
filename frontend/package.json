@@ -35,5 +35,8 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.0",
     "vite-plugin-istanbul": "^6.0.0"
+  },
+  "volta": {
+    "node": "20.12.0"
   }
 }
