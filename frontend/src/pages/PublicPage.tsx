@@ -7,7 +7,6 @@ export function PublicPage () {
       <p>
         Eu sou uma página pública
       </p>
-      <div>
         {app.session ?
           (
             <>
@@ -22,7 +21,8 @@ export function PublicPage () {
             </small>
           )
         }
-      </div>
-    </>
-  )
+    </div>
+{'}'}
+</>
+)
 }

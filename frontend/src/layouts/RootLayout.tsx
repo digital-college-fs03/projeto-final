@@ -4,7 +4,7 @@ export function RootLayout () {
   return (
     <div>
       <div>
-        <Link to="/">Pública</Link>
+        <Link to="/pública">Pública</Link>
         &nbsp;|&nbsp;
         <Link to="/private">Privada</Link>
       </div>

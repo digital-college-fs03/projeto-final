@@ -23,12 +23,12 @@ export default function App () {
             element={<LoginPage />}
           />
           <Route element={<ProtectedRoute />}>
-            <Route
+              <Route
               path="/private"
               element={<PrivatePage />}
-            />
+              />
           </Route>
-        </Route>
+          </Route>
       </Routes>
     </AppProvider>
   )
